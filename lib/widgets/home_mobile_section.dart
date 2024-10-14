@@ -99,7 +99,7 @@ class MainMobile extends StatelessWidget {
                 const SizedBox(width: 30),
                 GestureDetector(
                   onTap: () async {
-                    const url = 'assets/lib/assets/others/phucbh_CV.pdf';
+                    const url = 'assets/lib/assets/others/Phucbh\'s_CV.pdf';
 
                     html.AnchorElement(href: url)
                       ..setAttribute('download', 'Phucbh_CV.pdf')

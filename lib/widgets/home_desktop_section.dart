@@ -89,7 +89,7 @@ class HomeSection extends StatelessWidget {
                           GestureDetector(
                             onTap: () async {
                               const url =
-                                  'assets/lib/assets/others/phucbh_CV.pdf';
+                                  'assets/lib/assets/others/Phucbh\'s_CV.pdf';
 
                               html.AnchorElement(href: url)
                                 ..setAttribute('download', 'Phucbh_CV.pdf')

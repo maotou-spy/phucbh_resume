@@ -34,6 +34,18 @@ const List<Map> skillItems = [
     "title": "CSS3",
   },
   {
+    "img": AssetHelper.playwrightIcon,
+    "title": "Playwright",
+  },
+  {
+    "img": AssetHelper.seleniumIcon,
+    "title": "Selenium",
+  },
+  {
+    "img": AssetHelper.restfulIcon,
+    "title": "RESTful API",
+  },
+  {
     "img": AssetHelper.mssqlIcon,
     "title": "MSSQL",
   },

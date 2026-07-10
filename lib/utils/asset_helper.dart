@@ -10,6 +10,8 @@ class AssetHelper {
   static const String css3Icon = 'lib/assets/imgs/css3.png';
   static const String javaIcon = 'lib/assets/imgs/java.png';
   static const String dotnetIcon = 'lib/assets/imgs/dotnet.png';
+  static const String playwrightIcon = 'lib/assets/imgs/playwright.png';
+  static const String seleniumIcon = 'lib/assets/imgs/selenium.jpg';
   static const String restfulIcon = 'lib/assets/imgs/restful.png';
   static const String mysqlIcon = 'lib/assets/imgs/mysql.png';
   static const String mssqlIcon = 'lib/assets/imgs/mssql.png';
@@ -23,4 +25,7 @@ class AssetHelper {
   static const String fptSoftwareImage = 'lib/assets/imgs/fpt_software.png';
   static const String baiImage = 'lib/assets/imgs/bai.png';
   static const String lumosImage = 'lib/assets/imgs/lumos.png';
+
+  static const String resumePdf =
+      'lib/assets/others/Phuc_BuiHuu_FullstackTestEngineer_Resume.pdf';
 }

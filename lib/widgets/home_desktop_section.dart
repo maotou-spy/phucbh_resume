@@ -1,20 +1,19 @@
-// ignore: avoid_web_libraries_in_flutter
-import 'dart:html' as html;
-
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../constants/colors.dart';
 import '../constants/styles.dart';
-
 import '../utils/asset_helper.dart';
+import '../utils/url_helper.dart';
 
 class HomeSection extends StatelessWidget {
   const HomeSection({
     super.key,
-    required this.onHireMeTap,
+    required this.onGetInTouch,
   });
 
-  final VoidCallback onHireMeTap;
+  final VoidCallback onGetInTouch;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +33,6 @@ class HomeSection extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: SingleChildScrollView(
-                  // Thêm SingleChildScrollView vào đây
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -54,12 +52,12 @@ class HomeSection extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Backend & Flutter Developer',
+                        'Fullstack Test Engineer | Automation Test Engineer',
                         style: AppTextStyle.subtitle,
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'A passionate software engineer seeking to develop as a backend and mobile developer. Eager to learn and ready to face challenges to enhance skills. Determined to contribute to the company\'s growth by building a robust backend and high-quality mobile applications.',
+                        'Fullstack Test Engineer with proven experience testing large‑scale backend systems and APIs. Skilled in manual and automation testing, API validation, requirement analysis, and SQL verification. Leveraging a strong development background, collaborates closely with developers to improve release stability and reduce defect leakage, ensuring high‑quality, reliable software deliveries.',
                         style: AppTextStyle.body.copyWith(
                           fontWeight: FontWeight.normal,
                         ),
@@ -69,7 +67,7 @@ class HomeSection extends StatelessWidget {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              onHireMeTap();
+                              onGetInTouch();
                             },
                             child: Container(
                               alignment: Alignment.center,
@@ -80,7 +78,7 @@ class HomeSection extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               child: Text(
-                                'Hire Me',
+                                'Get in Touch',
                                 style: AppTextStyle.title,
                               ),
                             ),
@@ -88,12 +86,8 @@ class HomeSection extends StatelessWidget {
                           const SizedBox(width: 45),
                           GestureDetector(
                             onTap: () async {
-                              const url =
-                                  'assets/lib/assets/others/Phucbh\'s_CV.pdf';
-
-                              html.AnchorElement(href: url)
-                                ..setAttribute('download', 'Phucbh_CV.pdf')
-                                ..click();
+                              final resumeUrl = dotenv.get('RESUME_URL');
+                              await UrlHelper.openUrl(resumeUrl);
                             },
                             child: Container(
                               alignment: Alignment.center,
@@ -102,12 +96,10 @@ class HomeSection extends StatelessWidget {
                               decoration: BoxDecoration(
                                 color: Colors.transparent,
                                 borderRadius: BorderRadius.circular(5),
-                                border: Border.all(
-                                  color: AppColors.outlinedButtonColor,
-                                ),
+                                border: Border.all(color: AppColors.outlinedButtonColor),
                               ),
                               child: Text(
-                                'Download CV',
+                                'My Resume',
                                 style: AppTextStyle.title,
                               ),
                             ),

@@ -61,7 +61,7 @@ class _MainPageState extends State<MainPage> {
                     (screenWidth >= 800)
                         ? HomeSection(
                             key: navbarKeys.first,
-                            onHireMeTap: () {
+                            onGetInTouch: () {
                               scrollToSection(3);
                             })
                         : MainMobile(

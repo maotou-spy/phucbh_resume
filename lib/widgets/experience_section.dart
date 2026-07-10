@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:phucbh_resume/constants/colors.dart';
 
@@ -15,8 +17,6 @@ class ExperienceSection extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(25, 20, 25, 60),
       child: Column(
         children: [
-          // Job experience title
-
           const Text(
             "Job Experience",
             style: TextStyle(
@@ -26,22 +26,8 @@ class ExperienceSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 50),
-          // Work projects cards
-          ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 900),
-            child: Wrap(
-              spacing: 25,
-              runSpacing: 25,
-              children: [
-                for (int i = 0; i < workExUtils.length; i++)
-                  ExCardWidget(
-                    project: workExUtils[i],
-                  ),
-              ],
-            ),
-          ),
+          _HorizontalCardList(projects: workExUtils),
           const SizedBox(height: 80),
-          // Personal experience title
           const Text(
             "Personal Experience",
             style: TextStyle(
@@ -51,21 +37,69 @@ class ExperienceSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 50),
-          // Hobby projects cards
-          ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 900),
-            child: Wrap(
-              spacing: 25,
-              runSpacing: 25,
-              children: [
-                for (int i = 0; i < personalExUtils.length; i++)
-                  ExCardWidget(
-                    project: personalExUtils[i],
-                  ),
-              ],
-            ),
-          ),
+          _HorizontalCardList(projects: personalExUtils),
         ],
+      ),
+    );
+  }
+}
+
+class _HorizontalCardList extends StatefulWidget {
+  const _HorizontalCardList({required this.projects});
+  final List<ExUtils> projects;
+
+  @override
+  State<_HorizontalCardList> createState() => _HorizontalCardListState();
+}
+
+class _HorizontalCardListState extends State<_HorizontalCardList> {
+  final ScrollController _controller = ScrollController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _onPointerSignal(PointerSignalEvent event) {
+    if (event is PointerScrollEvent) {
+      // scroll horizontally
+      final newOffset = _controller.offset + event.scrollDelta.dy;
+      _controller.jumpTo(
+        newOffset.clamp(0.0, _controller.position.maxScrollExtent),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Listener(
+      onPointerSignal: _onPointerSignal,
+      child: ScrollConfiguration(
+        behavior: ScrollConfiguration.of(context).copyWith(
+          dragDevices: {
+            PointerDeviceKind.touch,
+            PointerDeviceKind.mouse,
+            PointerDeviceKind.trackpad,
+          },
+        ),
+        child: SingleChildScrollView(
+          controller: _controller,
+          scrollDirection: Axis.horizontal,
+          physics: const BouncingScrollPhysics(),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              for (int i = 0; i < widget.projects.length; i++)
+                Padding(
+                  padding: EdgeInsets.only(
+                    right: i == widget.projects.length - 1 ? 0 : 25,
+                  ),
+                  child: ExCardWidget(project: widget.projects[i]),
+                ),
+            ],
+          ),
+        ),
       ),
     );
   }

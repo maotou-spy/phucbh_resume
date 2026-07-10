@@ -24,14 +24,14 @@ class AboutMobile extends StatelessWidget {
           style: AppTextStyle.body
               .copyWith(color: AppColors.white, fontStyle: FontStyle.italic),
         ),
-        const SizedBox(height: 10),
-        Text(
-          'Expected Graduation: Nov 2024',
-          style: AppTextStyle.body.copyWith(
-            color: AppColors.white.withOpacity(0.3),
-            fontStyle: FontStyle.italic,
-          ),
-        ),
+        // const SizedBox(height: 10),
+        // Text(
+        //   'Expected Graduation: Nov 2024',
+        //   style: AppTextStyle.body.copyWith(
+        //     color: AppColors.white.withOpacity(0.3),
+        //     fontStyle: FontStyle.italic,
+        //   ),
+        // ),
         const SizedBox(height: 45),
         Image.asset(
           AssetHelper.fptuImage,

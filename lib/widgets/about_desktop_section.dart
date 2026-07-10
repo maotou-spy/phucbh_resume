@@ -38,13 +38,13 @@ class AboutDesktop extends StatelessWidget {
                         fontStyle: FontStyle.italic,
                       ),
                     ),
-                    const SizedBox(height: 10),
-                    Text(
-                      'Expected Graduation: Nov 2024',
-                      style: AppTextStyle.body.copyWith(
-                          color: AppColors.white.withOpacity(0.3),
-                          fontStyle: FontStyle.italic),
-                    ),
+                    // const SizedBox(height: 10),
+                    // Text(
+                    //   'GPA: 7.6',
+                    //   style: AppTextStyle.body.copyWith(
+                    //       color: AppColors.white.withValues(alpha: 0.3),
+                    //       fontStyle: FontStyle.italic),
+                    // ),
 
                     // fptu logo
                     const SizedBox(height: 45),

@@ -3,67 +3,74 @@ import 'package:phucbh_resume/utils/asset_helper.dart';
 class ExUtils {
   final String image;
   final String title;
+  final String? companyDescription;
   final String time;
-  final int teamSize;
   final String description;
   final String? techUsed;
-  final String? managementTools;
   final String? role;
   final String? video;
 
   ExUtils({
     required this.image,
     required this.title,
+    this.companyDescription,
     required this.time,
-    required this.teamSize,
     required this.description,
     this.techUsed,
-    this.managementTools,
     this.role,
     this.video,
   });
 }
 
 // ###############
-// PERSONAL PROJECTS
+// EXPERIENCE PROJECTS
 List<ExUtils> workExUtils = [
   ExUtils(
+    image: AssetHelper.s4btImage,
+    title: 'S4BT Solutions for Business Travel.',
+    companyDescription: 'European company simplifying business travel booking and payments.',
+    time: '2026 - Present',
+    description: 'QA automation for booking workflows, manual/API testing, and automation with Playwright & Selenium.',
+    techUsed: 'Teams size: 15, Selenium (C#), Playwright (TypeScript), Azure DevOps, Git',
+    role: 'QA Automation Engineer',
+  ),
+  ExUtils(
+    image: AssetHelper.tsbImage,
+    title: 'Total Soft Bank Ltd.',
+    companyDescription: 'Global leader in maritime and logistics software.',
+    time: '2025 - 2026',
+    description: 'Analyzed requirements, coordinated QA testing, and validated API integrations with ERP systems.',
+    role: 'Software QA Engineer',
+    techUsed: 'Team size: 5'
+  ),
+  ExUtils(
     image: AssetHelper.fptSoftwareImage,
-    title: 'FPT Software Co., Ltd (HCM)',
-    time: 'May 2023 - Sep 2023',
-    teamSize: 12,
-    description:
-        'Contributed to the development of a recruitment website for FPT Software, utilizing Spring Boot, collaborating with the team, and gaining enterprise-level experience.',
-    techUsed: 'Java, Spring Boot',
-    managementTools: 'GitHub, Google Docs',
+    title: 'FPT Software Co., Ltd.',
+    time: '2023',
+    description: 'Developed backend services and RESTful APIs for recruitment site using Spring Boot.',
+    techUsed: 'Team size: 10, Java, Spring Boot, Git, Google Docs',
     role: 'Java Developer Intern',
   ),
 ];
 
 // ###############
-// WORK PROJECTS
+// PERSONAL PROJECTS
 List<ExUtils> personalExUtils = [
   ExUtils(
     image: AssetHelper.baiImage,
-    title: 'Bai - No Cash Payment Bike Parking Application for FPTU Campus',
-    time: 'Apr 2024 - Sep 2024',
-    teamSize: 4,
-    description:
-        'The Bai Parking app efficiently manages parking at FPT University HCM, featuring parking management, in-app purchases, statistics, and user classification.',
-    techUsed: 'Electron, ASP.NET, Entity Framework, Flutter, VNPAY, ZaloPay',
-    managementTools: 'GitHub, Google Workspace',
-    role: 'Backend developer, Mobile developer',
+    title: 'Bai - Bike Parking App for FPTU',
+    time: '2024',
+    description: 'Cashless parking management app with in-app payments, statistics, and user roles.',
+    techUsed: 'Electron, ASP.NET, Flutter, VNPAY, ZaloPay, GitHub, Google Workspace',
+    role: 'Backend & Mobile Developer',
   ),
   ExUtils(
     image: AssetHelper.lumosImage,
-    title: 'Lumos - A Mothers\' Home Healthcare Platform',
-    time: 'Jan 2024 - Apr 2024',
-    teamSize: 4,
-    description:
-        'A platform connecting expectant and new mothers, along with infants, to home medical services, allowing easy appointment scheduling with trusted providers.',
-    techUsed: 'Next.js, ASP.NET - Entity Framework,  Flutter, payOS',
-    managementTools: 'GitHub, Trello, Google Workspace',
-    role: 'Backend developer, Mobile developer',
+    title: 'Lumos - Mothers\' Home Healthcare Platform',
+    time: '2024',
+    description: 'Platform connecting mothers & infants to home medical services with easy appointment scheduling.',
+    techUsed: 'Next.js, ASP.NET, Flutter, payOS, Git, Trello, Google Workspace',
+    role: 'Backend & Mobile Developer',
     video: 'https://youtu.be/sdqDnwKHtEE',
   ),
 ];

@@ -23,9 +23,8 @@ class AssetHelper {
 
   // Experience items
   static const String fptSoftwareImage = 'lib/assets/imgs/fpt_software.png';
+  static const String tsbImage = 'lib/assets/imgs/tsb.png';
+  static const String s4btImage = 'lib/assets/imgs/s4bt.png';
   static const String baiImage = 'lib/assets/imgs/bai.png';
   static const String lumosImage = 'lib/assets/imgs/lumos.png';
-
-  static const String resumePdf =
-      'lib/assets/others/Phuc_BuiHuu_FullstackTestEngineer_Resume.pdf';
 }

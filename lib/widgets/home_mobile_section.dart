@@ -72,51 +72,52 @@ class MainMobile extends StatelessWidget {
             const SizedBox(height: 45),
             // contact btn
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    onHireMeTap();
-                  },
-                  child: Container(
-                    alignment: Alignment.center,
-                    width: screenWidth * 0.25,
-                    padding: const EdgeInsets.symmetric(vertical: 15),
-                    decoration: BoxDecoration(
-                      gradient: AppColors.buttonGradient,
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: Text(
-                      'Get in Touch',
-                      style: AppTextStyle.subtitle.copyWith(
-                        color: AppColors.white,
-                        fontSize: 14,
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      onHireMeTap();
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.symmetric(vertical: 15),
+                      decoration: BoxDecoration(
+                        gradient: AppColors.buttonGradient,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Text(
+                        'Get in Touch',
+                        style: AppTextStyle.subtitle.copyWith(
+                          color: AppColors.white,
+                          fontSize: 16,
+                        ),
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(width: 30),
-                GestureDetector(
-                  onTap: () async {
-                    final resumeUrl = dotenv.get('RESUME_URL');
-                    await UrlHelper.openUrl(resumeUrl);
-                  },
-                  child: Container(
-                    alignment: Alignment.center,
-                    width: screenWidth * 0.35,
-                    padding: const EdgeInsets.symmetric(vertical: 15),
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(
-                        color: AppColors.outlinedButtonColor,
+                const SizedBox(width: 20),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () async {
+                      final resumeUrl = dotenv.get('RESUME_URL');
+                      await UrlHelper.openUrl(resumeUrl);
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.symmetric(vertical: 15),
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(5),
+                        border: Border.all(
+                          color: AppColors.outlinedButtonColor,
+                        ),
                       ),
-                    ),
-                    child: Text(
-                      'My Resume',
-                      style: AppTextStyle.subtitle.copyWith(
-                        color: AppColors.white,
-                        fontSize: 14,
+                      child: Text(
+                        'My Resume',
+                        style: AppTextStyle.subtitle.copyWith(
+                          color: AppColors.white,
+                          fontSize: 16,
+                        ),
                       ),
                     ),
                   ),

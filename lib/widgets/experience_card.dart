@@ -16,7 +16,7 @@ class ExCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       clipBehavior: Clip.antiAlias,
-      width: 300,
+      width: 350,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         color: AppColors.textColor,
@@ -34,6 +34,7 @@ class ExCardWidget extends StatelessWidget {
               child: Image.asset(
                 project.image,
                 width: 300,
+                colorBlendMode: BlendMode.srcATop,
                 fit: BoxFit.contain,
               ),
             ),
@@ -47,26 +48,55 @@ class ExCardWidget extends StatelessWidget {
                 ),
               ),
             ),
-            // time
+            // role + time
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: Text(project.time,
-                  style: AppTextStyle.caption.copyWith(
-                    color: AppColors.white.withOpacity(0.9),
-                    fontSize: 11,
-                    fontStyle: FontStyle.italic,
-                  )),
+              padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.baseline,
+                textBaseline: TextBaseline.alphabetic,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  if (project.role != null)
+                    Text(project.role!,
+                        style: AppTextStyle.caption.copyWith(
+                          color: AppColors.white,
+                          fontWeight: FontWeight.w600,
+                        )),
+                  // if (project.role != null)
+                  //   Text('  ·  ',
+                  //       style: AppTextStyle.caption.copyWith(
+                  //         color: AppColors.white.withValues(alpha: 0.9),
+                  //         // fontSize: 11,
+                  //         fontStyle: FontStyle.italic,
+                  //       )),
+                  Text(project.time,
+                      style: AppTextStyle.caption.copyWith(
+                        color: AppColors.white.withValues(alpha: 0.6),
+                        fontSize: 11,
+                      )),
+                ],
+              ),
             ),
-            // role
-            if (project.role != null)
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Divider(
+                  color: AppColors.white.withValues(alpha: 0.1), height: 1),
+            ),
+
+            // company description
+            if (project.companyDescription != null)
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                child: Text(project.role!,
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: Text(project.companyDescription!,
                     style: AppTextStyle.caption.copyWith(
-                      color: AppColors.white.withOpacity(0.9),
+                      color: AppColors.white.withValues(alpha: 0.9),
+                      // fontSize: 11,
+                      fontStyle: FontStyle.italic,
                     )),
               ),
+
+            const SizedBox(height: 10),
 
             // description
             Padding(
@@ -74,31 +104,37 @@ class ExCardWidget extends StatelessWidget {
               child: Text(
                 project.description,
                 style: AppTextStyle.caption.copyWith(
-                  color: AppColors.white.withOpacity(0.9),
+                  color: AppColors.white.withValues(alpha: 0.9),
                 ),
               ),
             ),
             const SizedBox(height: 10),
 
-            // team size
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: Text('\u2022 Team size: ${project.teamSize}',
-                  style: AppTextStyle.caption.copyWith(
-                    color: AppColors.white.withOpacity(0.9),
-                  )),
-            ),
-
             // technologies used
             if (project.techUsed != null)
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                child: Text(
-                  '\u2022 Technologies: ${project.techUsed!}',
-                  style: AppTextStyle.caption.copyWith(
-                    color: AppColors.white.withOpacity(0.8),
-                  ),
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                child: Wrap(
+                  spacing: 6,
+                  runSpacing: 6,
+                  children: project.techUsed!
+                      .split(',')
+                      .map((t) => Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 4),
+                            decoration: BoxDecoration(
+                              color: AppColors.white.withValues(alpha: 0.08),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Text(t.trim(),
+                                style: AppTextStyle.caption.copyWith(
+                                  color:
+                                      AppColors.white.withValues(alpha: 0.85),
+                                  fontSize: 10,
+                                )),
+                          ))
+                      .toList(),
                 ),
               ),
 
@@ -111,7 +147,7 @@ class ExCardWidget extends StatelessWidget {
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 decoration: BoxDecoration(
-                  color: AppColors.white.withOpacity(0.05),
+                  color: AppColors.white.withValues(alpha: 0.05),
                 ),
                 child: TextButton(
                   onPressed: () async {

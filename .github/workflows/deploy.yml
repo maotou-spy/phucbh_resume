@@ -1,0 +1,35 @@
+name: Deploy to WebHost
+
+on:
+  push:
+    branches:
+      - main  # trigger the action when you push code to this branch
+  workflow_dispatch: # trigger the action in github
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Build Web
+        run: flutter build web --release --base-href "/phucbh_resume/" 
+
+      - name: Deploy to FlutterWebHost
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.DEPLOY_TOKEN }}
+          repository-name: maotou-spy/phucbh_resume
+          branch: webhost-pages
+          folder: build/web

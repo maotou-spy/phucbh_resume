@@ -1,8 +1,8 @@
 # PhucBH's Portfolio
 
-A personal portfolio & resume website built with **Flutter Web**, showcasing my experience as a Fullstack Test Engineer / Automation Test Engineer.
+A personal portfolio & resume website built with **Flutter Web**, showcasing my experience as a Fullstack Test Engineer | Automation Test Engineer.
 
-🔗 **Live site:** [phucbh.id.vn](https://phucbh.id.vn) · [phucbh.netlify.app](https://phucbh.netlify.app)
+🔗 **Live site:** [phucbh.id.vn](https://phucbh.id.vn) · [phucbh-resume.pages.dev](https://phucbh-resume.pages.dev/)
 
 ![Static Badge](https://img.shields.io/badge/Flutter-02569B%3Fstyle%3Dflat%26logo%3Dflutter%26logoColor%3Dwhite)
 ![Static Badge](https://img.shields.io/badge/Dart-0175C2%3Fstyle%3Dflat%26logo%3Ddart%26logoColor%3Dwhite)
@@ -22,9 +22,9 @@ This is a responsive, single-page portfolio site featuring:
 - **Framework:** [Flutter](https://flutter.dev) (Web)
 - **Language:** Dart
 - **Packages:**
-    - [`flutter_dotenv`](https://pub.dev/packages/flutter_dotenv) — environment variable management
-    - [`url_launcher`](https://pub.dev/packages/url_launcher) — opening external links (resume, demo videos)
-- **Deployment:** [Netlify](https://www.netlify.com/) with the [`netlify-plugin-flutter`](https://github.com/netlify/netlify-plugin-flutter) build plugin
+  - [`flutter_dotenv`](https://pub.dev/packages/flutter_dotenv) — environment variable management
+  - [`url_launcher`](https://pub.dev/packages/url_launcher) — opening external links (resume, demo videos)
+- **Deployment:** [Cloudflare Pages](https://pages.cloudflare.com/)
 
 ## 📂 Project Structure
 
@@ -57,17 +57,20 @@ lib/
 ### Setup
 
 1. Clone the repository
+
    ```bash
    git clone https://github.com/maotou-spy/phucbh_resume.git
    cd phucbh_resume
    ```
 
 2. Install dependencies
+
    ```bash
    flutter pub get
    ```
 
 3. Create a `.env` file in the project root (see `.env.example` if available):
+
    ```env
    RESUME_URL=https://your-resume-link.com
    ```
@@ -87,11 +90,11 @@ Output is generated in `build/web`.
 
 ## 🌐 Deployment
 
-This project is deployed via **Netlify**, using the `netlify-plugin-flutter` build plugin.
+This project is deployed via **Cloudflare Pages**
 
 - **Build command:** `flutter build web`
 - **Publish directory:** `build/web`
-- Environment variables (e.g. `RESUME_URL`) are configured under **Site settings > Environment variables** on Netlify.
+- Environment variables (e.g. `RESUME_URL`) are configured under **Site settings > Environment variables** on Cloudflare Pages.
 
 ## 📄 License
 

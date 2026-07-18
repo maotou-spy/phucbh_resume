@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../constants/colors.dart';
 import '../constants/styles.dart';
@@ -96,7 +95,8 @@ class HomeSection extends StatelessWidget {
                               decoration: BoxDecoration(
                                 color: Colors.transparent,
                                 borderRadius: BorderRadius.circular(5),
-                                border: Border.all(color: AppColors.outlinedButtonColor),
+                                border: Border.all(
+                                    color: AppColors.outlinedButtonColor),
                               ),
                               child: Text(
                                 'My Resume',

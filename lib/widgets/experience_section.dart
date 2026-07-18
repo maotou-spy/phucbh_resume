@@ -61,11 +61,22 @@ class _HorizontalCardListState extends State<_HorizontalCardList> {
   }
 
   void _onPointerSignal(PointerSignalEvent event) {
-    if (event is PointerScrollEvent) {
-      // scroll horizontally
-      final newOffset = _controller.offset + event.scrollDelta.dy;
-      _controller.jumpTo(
-        newOffset.clamp(0.0, _controller.position.maxScrollExtent),
+    if (event is PointerScrollEvent && _controller.hasClients) {
+      // Translate vertical wheel/trackpad scroll into horizontal list movement.
+      // Use animateTo for smoother motion instead of an immediate jump.
+      final scrollDelta = event.scrollDelta.dy != 0
+          ? event.scrollDelta.dy
+          : event.scrollDelta.dx;
+      final currentOffset = _controller.offset;
+      final newOffset = (currentOffset + scrollDelta)
+          .clamp(0.0, _controller.position.maxScrollExtent);
+      if (newOffset == currentOffset) {
+        return;
+      }
+      _controller.animateTo(
+        newOffset,
+        duration: const Duration(milliseconds: 150),
+        curve: Curves.easeOut,
       );
     }
   }
